@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;500;600&family=Roboto+Mono:wght@400;500;700&family=Unbounded:wght@300;400&display=swap" rel="stylesheet">
+      <script src="eel.js"></script>
+      <script src="js/main.js"></script>
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/client_style.css">
+      <title>Матвей & Компания</title>
+  </head>
+  <body onload="update_element()">
+      <div class="container">
+        <div class="header">
+            <div class="header-logo">
+                <img src="img/activity.svg" alt="logo" class="logo">
+                <h1 class="bank-title">Матвей & Компания</h1>
+            </div>
+        </div>
+        <div class="main">
+            <div class="client-info" id="client-info">
+                <p class="login-title" id="username"/>
+                <p class="number-title" id="number"/>
+
+                <div class="operation-buttons ">
+                    <button class="login-btn btn-left" id="open-deposit-window">
+                        Депозиты
+                    </button>
+                    <button class="login-btn btn-left" id="open-credit-window">
+                        Кредиты
+                    </button>
+                </div>
+                <div class="balance-operations">
+                    <p class="client-balance" id="balance"></p>
+                    <button class="login-btn btn-left transfer-balance" id="open-transfer-button">
+                        Перевести
+                    </button>
+                </div>
+            </div >
+            <div class="credit-info" id="credit-info">
+                <div class="input-credit-container">
+                    <p class="number-title">Открыть кредит</p>
+                    <form class="operation-form">
+                        <p style="margin-bottom: 15px;" class="link input-text operation-info-text input-label">Сумма кредита:</p>
+                        <input class="input-style number-input" type="number" id="loanAmount"><br>
+
+                        <p style="margin-bottom: 15px;" class="link input-text operation-info-text input-label">Годовая процентная ставка:</p>
+                        <input class="input-style number-input" type="number" id="interestRate"><br>
+
+                        <p style="margin-bottom: 15px;" class="link input-text operation-info-text input-label">Срок кредита (в месяцах):</p>
+                        <input class="input-style number-input" type="number" id="loanLength"><br>
+                    </form>
+                    <p class="link input-text operation-info-text input-label">Ежемесячный платеж: <span id="monthlyPayment"></span></p>
+                    <p class="link input-text operation-info-text input-label">Общая переплата: <span id="totalOverpayment"></span></p>
+                </div>
+                <hr class="line">
+                <div class="operation-buttons ">
+                    <button class="login-btn btn-left" onclick="calculateLoan()">
+                        Рассчитать
+                    </button>
+                    <button class="login-btn btn-left" hidden="true">
+                        Получить
+                    </button>
+                    <button class="login-btn btn-left" id="credit-btn-cancel">
+                        Назад
+                    </button>
+                </div>
+            </div>
+            <div class="credit-info" id="deposit-info">
+                <div class="input-credit-container">
+                    <p class="number-title">Открыть депозит</p>
+
+                    <form class="operation-form">
+                        <p style="margin-bottom: 15px;" class="link input-text operation-info-text input-label">Начальная сумма депозита:</p>
+                        <input class="input-style number-input" type="number" id="initialAmount"><br>
+
+                        <p style="margin-bottom: 15px;" class="link input-text operation-info-text input-label">Годовая процентная ставка:</p>
+                        <input class="input-style number-input" type="number" id="interestDepositRate"><br>
+
+                        <p style="margin-bottom: 15px;" class="link input-text operation-info-text input-label">Продолжительность инвестиций (в годах):</p>
+                        <input class="input-style number-input" type="number" id="investmentLength"><br>
+                    </form>
+                    <div class="deposit-info">
+                        <p class="link input-text operation-info-text input-label">Всего заработанных процентов: <span id="totalInterest"></span></p>
+                        <p class="link input-text operation-info-text input-label">Общий заработок: <span id="totalValue"></span></p>
+                    </div>
+                </div>
+                <hr class="line">
+                <div class="operation-buttons ">
+                    <button class="login-btn btn-left" onclick="calculateDeposit()">
+                        Рассчитать
+                    </button>
+                    <button class="login-btn btn-left" hidden="true">
+                        Получить
+                    </button>
+                    <button class="login-btn btn-left" id="deposit-btn-cancel">
+                        Назад
+                    </button>
+                </div>
+            </div>
+            <div class="transfer-info" id="transfer-info">
+                <div id="transfer-block" class="transfer-block">
+                    <input type="text" class="input-style" id="number-transfer-input" placeholder="Номер получателя">
+                    <input type="text" class="input-style" id="amount-transfer-input" placeholder="Сумма">
+                    <button class="login-btn btn-left transfer-balance" id="submit-transfer-button">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
